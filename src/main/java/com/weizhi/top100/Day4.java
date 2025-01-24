@@ -1,6 +1,7 @@
 package com.weizhi.top100;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.PriorityQueue;
 import java.util.Stack;
 
@@ -32,6 +33,18 @@ public class Day4 {
       ans[i] = ints.poll()[1];
     }
     return ans;
+  }
+
+  public int singleNumber(int[] nums) {
+    HashSet<Integer> integers = new HashSet<>();
+    for (int i = 0; i < nums.length; i++) {
+      if (integers.contains(nums[i])) {
+        integers.remove(nums[i]);
+      } else {
+        integers.add(nums[i]);
+      }
+    }
+    return integers.iterator().next();
   }
 
   public static void main(String[] args) {
